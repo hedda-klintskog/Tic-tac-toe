@@ -36,3 +36,132 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol, ul {
+  /*padding-left: 30px;*/
+}
+.board{
+  text-align: center;
+  display: grid;
+  align-items: center;
+  justify-items: center
+}
+
+.stratOver{
+  text-align: center;
+}
+
+.frame{
+  
+  text-align: center;
+
+}
+.start{
+  
+  text-align: center;
+  display: grid;
+  align-items: center;
+  justify-items: center
+
+}
+
+
+
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 70px;
+  height: 70px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 70px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+.game {
+  display:flex;
+  flex-direction: column;
+  
+ 
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+.game-info {
+  margin-left: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 1px;
+  margin: 20px;
+}
+.grid-item {
+  
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 5px;
+  text-align: center;
+}
+
+/*button:focus{background-color:dimgray;}*/
+
+.active{
+  background-color:dimgray;
+}
+.btn{
+  height: 70px;
+  text-align: center;
+  width: 70px;
+  font-size: 20px;
+  
+
+}
+
+.regularButton{
+  width: 80px;
+  height: 50px;
+  font: 14px "Century Gothic", Futura, sans-serif;
+
+
+}
+
+/*.button:active
+{
+  background-color:red;  
+}*/
