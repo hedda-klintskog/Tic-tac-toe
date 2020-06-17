@@ -9,21 +9,21 @@ function Game(props) {
     const [play, setPlay] = useState(false);
     const [winner, setWinner] = useState(null);
 
-    handleEmoji = (emoji) => {
+    const handleEmoji = (emoji) => {
         setEmoji(emoji);
     }
 
-    handleWin = (win) => {
+    const handleWin = (win) => {
         setWinner(win);
     }
 
-    handleNewGame = (e) =>{
+    const handleNewGame = (e) =>{
         
         setEmoji("");
         handleClick();
     }
 
-    handleClick = (e) => {
+    const handleClick = (e) => {
         setPlay(!play);
         setWinner(null);
        

@@ -3,14 +3,14 @@ import Emoji from "./Emoji"
 
 function Preferences(props){
     
-    buttonClick=(e)=> {
+    const buttonClick=(e)=> {
         
         var emoji =e.target.value;
         props.buttonClick(emoji);
         var current = document.getElementsByClassName("active");
-        console.log(current[0]);
+        
         if(current[0]){
-            console.log(current[0].className);
+            
             current[0].className ="btn";
         }
         e.target.className += " active ";

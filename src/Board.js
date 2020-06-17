@@ -10,7 +10,15 @@ function Board(props) {
 
 
 
-  //New object each time, can't compare them to each other  
+  //New object each time, can't compare them to each other 
+  let i= 3;
+  let arr = Array(i);
+  for(let a in arr){
+    let arr2 = Array(i).fill(null);
+    a=arr2;
+  } 
+  console.log("arr");
+  console.log(arr);
   const x=<Emoji symbol={props.emoji} label="You"/>;
   const y=<Emoji symbol={'\u{1F608}'} label="Opponent"/>;
   const [squares,setSquare] = useState(Array(9).fill(null));  
