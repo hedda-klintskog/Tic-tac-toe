@@ -106,7 +106,6 @@ ol, ul {
   background: #ddd;
 }
 
-
 .game {
   display: flex;
   flex-direction: row;
@@ -139,7 +138,6 @@ ol, ul {
   text-align: center;
 }
 
-/*button:focus{background-color:dimgray;}*/
 
 .active{
   background-color:dimgray;

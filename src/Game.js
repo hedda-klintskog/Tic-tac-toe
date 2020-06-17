@@ -1,49 +1,43 @@
-import React, { Component } from 'react';
+import React, {useEffect, useState} from 'react';  
 import Board from "./Board"
 import Preferences from "./Preferences";
 
-class Game extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          myEmoji: "",
-          play: false,
-          winner: null,
-        };
-    }
+function Game(props) {
+    
+
+    const [myEmoji, setEmoji] = useState("");
+    const [play, setPlay] = useState(false);
+    const [winner, setWinner] = useState(null);
 
     handleEmoji = (emoji) => {
-        this.setState({myEmoji: emoji});
+        setEmoji(emoji);
     }
 
     handleWin = (win) => {
-        this.setState({winner: win,});
+        setWinner(win);
     }
 
     handleNewGame = (e) =>{
-
-        this.setState({play: !this.state.play,
-            winner: null,
-            myEmoji: "",
-        });
-
+        
+        setEmoji("");
+        handleClick();
     }
 
     handleClick = (e) => {
-        this.setState({play: !this.state.play,
-            winner: null,
-        });
+        setPlay(!play);
+        setWinner(null);
+       
     }
-    render() {
-        const emoji = this.state.myEmoji;
+    
+    const emoji = myEmoji;
       return (
           <div className="frame">
         
-            {!this.state.play &&
+            {!play &&
             <div className="start">
                 
-                <p>Choose Emoji:</p><Preferences buttonClick={this.handleEmoji}/>
-                <button className="regularButton" onClick={this.handleClick} disabled={!this.state.myEmoji}>Start</button>
+                <p>Choose Emoji:</p><Preferences buttonClick={handleEmoji}/>
+                <button className="regularButton" onClick={handleClick} disabled={!myEmoji}>Start</button>
             </div>
     }
           {/*<div className="game-info">
@@ -51,23 +45,23 @@ class Game extends React.Component {
             
 <ol></ol>*/}
 
-            {this.state.play &&
+            {play &&
             <div className="game">
           <div className="game-board">
-            <Board emoji = {this.state.myEmoji} handleWin = {this.handleWin}/>
+            <Board emoji = {myEmoji} handleWin = {handleWin}/>
           </div>
           </div>
           
           }
-          {this.state.winner && 
+          {winner && 
           <div className="stratOver">
-           <p><button className="regularButton" onClick={this.handleNewGame}>New game</button></p>
+           <p><button className="regularButton" onClick={handleNewGame}>New game</button></p>
           </div>}
          {/** </div>*/} 
         </div>
         
       );
-    }
-  }
+    };
+ 
 
   export default Game;
