@@ -11,34 +11,29 @@ function Board(props) {
 
 
   //New object each time, can't compare them to each other 
-  let i= 3;
-  let arr = Array(i);
-  for(let a in arr){
-    let arr2 = Array(i).fill(null);
-    a=arr2;
-  } 
-  console.log("arr");
-  console.log(arr);
   const x=<Emoji symbol={props.emoji} label="You"/>;
   const y=<Emoji symbol={'\u{1F608}'} label="Opponent"/>;
   const [squares,setSquare] = useState(Array(9).fill(null));  
   const [isNext,setIsNext] = useState(true);  
+
+
   const handleClick = (i) => {
     const winner = CalcWin(squares);
     if (winner || squares[i]) {
       handleWinner(winner);
       return;
       } 
+   
     squares[i] = x;
     placeMarker();
     opponent();
-       //setTimeout(() => { opponent()}, 500);
     }
 
     const placeMarker = () => {
       setIsNext(!isNext);
-      setSquare(squares);   
+      setSquare(squares); 
     }
+
 
     const opponent = () => { 
         var i = opponentMove(squares);
@@ -46,7 +41,6 @@ function Board(props) {
           squares[i] = y;
           placeMarker();
         }
-
         const winner = CalcWin(squares);
         console.log(winner);   
         if(winner){
@@ -82,9 +76,11 @@ function Board(props) {
     if (winner) {
       status = <p>Winner: {winner}</p>;
       
-    } else {
+    } 
+    //unecesarry without the delay
+    /*else {
       status = <p>Next player: {isNext ? x : y}</p>
-    }
+    }*/
      
       return (
         <div className="board">
