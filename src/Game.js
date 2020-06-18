@@ -1,54 +1,40 @@
-import React, {useEffect, useState} from 'react';  
+import React, {useState} from 'react';  
 import Board from "./Board"
 import Preferences from "./Preferences";
 
-function Game(props) {
+function Game() {
     
 
-    const [myEmoji, setEmoji] = useState("");
+    const [emoji, setEmoji] = useState("");
     const [play, setPlay] = useState(false);
     const [winner, setWinner] = useState(null);
-
-    const handleEmoji = (emoji) => {
-        setEmoji(emoji);
-    }
-
-    const handleWin = (win) => {
-        setWinner(win);
-    }
-
-    const handleNewGame = (e) =>{
+    const handleNewGame = () =>{
         
         setEmoji("");
         handleClick();
     }
 
-    const handleClick = (e) => {
+    const handleClick = () => {
         setPlay(!play);
         setWinner(null);
        
     }
+
     
-    const emoji = myEmoji;
       return (
           <div className="frame">
         
             {!play &&
             <div className="start">
                 
-                <p>Choose Emoji:</p><Preferences buttonClick={handleEmoji}/>
-                <button className="regularButton" onClick={handleClick} disabled={!myEmoji}>Start</button>
-            </div>
-    }
-          {/*<div className="game-info">
-            <div></div>
-            
-<ol></ol>*/}
+                <p>Choose Emoji:</p><Preferences buttonClick={(emoji) => setEmoji(emoji)}/> 
+                <button className="regularButton" onClick={handleClick} disabled={!emoji}>Start</button>
+            </div>}
 
             {play &&
             <div className="game">
           <div className="game-board">
-            <Board emoji = {myEmoji} handleWin = {handleWin}/>
+            <Board emoji = {emoji} handleWin = {(win) => setWinner(win)}/>
           </div>
           </div>
           
@@ -57,7 +43,7 @@ function Game(props) {
           <div className="stratOver">
            <p><button className="regularButton" onClick={handleNewGame}>New game</button></p>
           </div>}
-         {/** </div>*/} 
+ 
         </div>
         
       );

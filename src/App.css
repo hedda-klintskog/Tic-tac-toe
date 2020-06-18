@@ -42,33 +42,26 @@ body {
   margin: 20px;
 }
 
-.board{
+.board {
   text-align: center;
   display: grid;
   align-items: center;
-  justify-items: center
+  justify-items: center;
 }
 
-.stratOver{
+.stratOver {
   text-align: center;
 }
 
-.frame{
-  
+.frame {
   text-align: center;
-
 }
-.start{
-  
+.start {
   text-align: center;
   display: grid;
   align-items: center;
-  justify-items: center
-
+  justify-items: center;
 }
-
-
-
 
 .board-row:after {
   clear: both;
@@ -108,10 +101,9 @@ body {
   flex-direction: row;
 }
 .game {
-  display:flex;
+  display: flex;
   flex-direction: column;
-  
- 
+
   margin-left: auto;
   margin-right: auto;
   width: 30%;
@@ -128,35 +120,24 @@ body {
   margin: 20px;
 }
 .grid-item {
-  
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 10px;
   font-size: 5px;
   text-align: center;
 }
 
-
-.active{
-  background-color:dimgray;
+.active {
+  background-color: dimgray;
 }
-.btn{
+.btn {
   height: 70px;
   text-align: center;
   width: 70px;
   font-size: 20px;
-  
-
 }
 
-.regularButton{
+.regularButton {
   width: 80px;
   height: 50px;
   font: 14px "Century Gothic", Futura, sans-serif;
-
-
 }
-
-/*.button:active
-{
-  background-color:red;  
-}*/
