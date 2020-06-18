@@ -1,7 +1,7 @@
 import Square from "./Square.js";
 import CalcWin from "./CalcWin";
 import Emoji from "./Emoji";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 function Board(props) {
@@ -10,32 +10,42 @@ function Board(props) {
   const [squares, setSquare] = useState(Array(9).fill(null));
   const [isNext, setIsNext] = useState(true);
 
+  useEffect(() => {
+    if (!isNext) {
+      const timeout = setTimeout(() => {
+        opponent();
+      }, 500);
+      return () => clearTimeout(timeout);
+    }
+  }, [isNext]);
+
   const handleClick = (i) => {
-    if (squares[i]) {
+    let temp = squares.slice();
+    if (temp[i]) {
       return;
     }
-
-    squares[i] = x;
-    placeMarker();
-    opponent();
+    temp[i] = x;
+    placeMarker(temp);
   };
 
-  const placeMarker = () => {
+  const placeMarker = (temp) => {
     setIsNext(!isNext);
-    setSquare(squares);
+    setSquare(temp);
   };
 
   const opponent = () => {
-    const winner = CalcWin(squares);
+    let temp = squares.slice();
+    const winner = CalcWin(temp);
     if (winner) {
       props.handleWin(winner);
+      return;
     }
 
-    for (var i = 0; i < squares.length; i++) {
-      if (!squares[i]) {
-        squares[i] = y;
-        placeMarker();
-        const winner = CalcWin(squares);
+    for (var i = 0; i < temp.length; i++) {
+      if (!temp[i]) {
+        temp[i] = y;
+        placeMarker(temp);
+        const winner = CalcWin(temp);
         if (winner) {
           props.handleWin(winner);
         }
@@ -45,7 +55,9 @@ function Board(props) {
   };
 
   const renderSquare = (i) => {
-    return <Square value={squares[i]} onClick={() => handleClick(i)} />;
+    return (
+      <Square value={squares[i]} dis={!isNext} onClick={() => handleClick(i)} />
+    );
   };
 
   const winner = CalcWin(squares);
